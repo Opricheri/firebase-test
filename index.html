@@ -12,29 +12,24 @@
     <button id="addDataBtn">データを追加</button>
 
     <script type="module">
-        // Firebase SDKの読み込み
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-        // Firebase設定（自分のプロジェクトに置き換えてください）
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyDxlhJDDJVrtO_5L5aBXesDYOfBOCMtsCc",
             authDomain: "test-3566a.firebaseapp.com",
             projectId: "test-3566a",
-            storageBucket: "test-3566a.firebasestorage.app",
+            storageBucket: "test-3566a.appspot.com",  // ← 正しい形式に修正
             messagingSenderId: "533205004878",
             appId: "1:533205004878:web:7f5a3d9ba1cbce9f59091f",
             measurementId: "G-4EFC4TL00F"
         };
 
-        // Firebase初期化
         const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app); // ← ここでFirestoreを有効化
+        const db = getFirestore(app);
 
-        // ボタン押下時にFirestoreへデータを追加する関数
         async function addData() {
-            console.log("ボタンが押されました"); // 確認用
+            console.log("ボタンが押されました");
             try {
                 const docRef = await addDoc(collection(db, "testCollection"), {
                     name: "GitHub Pages User",
@@ -47,7 +42,6 @@
             }
         }
 
-        // ボタンにイベントを設定
         document.getElementById("addDataBtn").addEventListener("click", addData);
     </script>
 </body>
